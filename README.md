@@ -1,9 +1,10 @@
-# parse-server-example
+# favz-server
 
-Example project using the [parse-server](https://github.com/ParsePlatform/parse-server) module on Express.
+Favz API server project using Express with the [parse-server](https://github.com/ParsePlatform/parse-server) and [parse-dashboard](https://github.com/ParsePlatform/parse-dashboard) as middleware modules.
 
 Read the full Parse Server guide here: https://github.com/ParsePlatform/parse-server/wiki/Parse-Server-Guide
 
+## Get Started
 ### For Local Development
 
 * Make sure you have at least Node 4.3. `node --version`
@@ -12,7 +13,7 @@ Read the full Parse Server guide here: https://github.com/ParsePlatform/parse-se
 * Install mongo locally using http://docs.mongodb.org/master/tutorial/install-mongodb-on-os-x/
 * Run `mongo` to connect to your database, just to make sure it's working. Once you see a mongo prompt, exit with Control-D
 * Run the server with: `npm start`
-* By default it will use a path of /parse for the API routes.  To change this, or use older client SDKs, run `export PARSE_MOUNT=/1` before launching the server.
+* By default it will use a path of /parse for the API routes.  To change this, or use older client SDKs, run `export PARSE_MOUNT=/api` before launching the server.
 * You now have a database named "dev" that contains your Parse data
 * Install ngrok and you can test with devices
 
@@ -27,7 +28,7 @@ Read the full Parse Server guide here: https://github.com/ParsePlatform/parse-se
 * Clone the repo and change directory to it
 * Log in with the [Heroku Toolbelt](https://toolbelt.heroku.com/) and create an app: `heroku create`
 * Use the [mLab addon](https://elements.heroku.com/addons/mongolab): `heroku addons:create mongolab:sandbox --app YourAppName`
-* By default it will use a path of /parse for the API routes.  To change this, or use older client SDKs, run `heroku config:set PARSE_MOUNT=/1`
+* By default it will use a path of /parse for the API routes.  To change this, or use older client SDKs, run `heroku config:set PARSE_MOUNT=/api`
 * Deploy it with: `git push heroku master`
 
 ### Getting Started With AWS Elastic Beanstalk
@@ -41,6 +42,7 @@ Read the full Parse Server guide here: https://github.com/ParsePlatform/parse-se
 * Clone the repo and change directory to it
 * Log in with the [AWS Elastic Beanstalk CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html), select a region, and create an app: `eb init`
 * Create an environment and pass in MongoDB URI, App ID, and Master Key: `eb create --envvars DATABASE_URI=<replace with URI>,APP_ID=<replace with Parse app ID>,MASTER_KEY=<replace with Parse master key>`
+* By default it will use a path of /parse for the API routes.  To change this, or use older client SDKs, run `eb setenv PARSE_MOUNT=/api`
 
 ### Getting Started With Microsoft Azure App Service
 
@@ -82,10 +84,10 @@ A detailed tutorial is available here:
 * Log in with the [Scalingo CLI](http://cli.scalingo.com/) and create an app: `scalingo create my-parse`
 * Use the [Scalingo MongoDB addon](https://scalingo.com/addons/scalingo-mongodb): `scalingo addons-add scalingo-mongodb free`
 * Setup MongoDB connection string: `scalingo env-set DATABASE_URI='$SCALINGO_MONGO_URL'`
-* By default it will use a path of /parse for the API routes. To change this, or use older client SDKs, run `scalingo env-set PARSE_MOUNT=/1`
+* By default it will use a path of /parse for the API routes. To change this, or use older client SDKs, run `scalingo env-set PARSE_MOUNT=/api`
 * Deploy it with: `git push scalingo master`
 
-# Using it
+## Using it
 
 Before using it, you can access a test page to verify if the basic setup is working fine [http://localhost:1337/test](http://localhost:1337/test).
 Then you can use the REST API, the JavaScript SDK, and any of our open-source SDKs:

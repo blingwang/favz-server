@@ -19,7 +19,7 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKey', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+    classNames: ['Posts', 'Comments'] // List of classes to support for query subscriptions
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
@@ -33,6 +33,12 @@ var dashboard = new ParseDashboard({
       'appId': process.env.APP_ID || 'myAppId',
       'masterKey': process.env.MASTER_KEY || 'myMasterKey',
       'appName': 'favz-server'
+    }
+  ],
+  'users': [
+    {
+        'user': 'favz-admin',
+        'pass': 'dash2favz'
     }
   ]
 });
