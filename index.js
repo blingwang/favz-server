@@ -15,9 +15,9 @@ if (!databaseUri) {
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'favzServer',
+  appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || 'myMasterKey', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://localhost:4040/api',  // Don't forget to change to https if needed
+  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
@@ -29,8 +29,8 @@ var api = new ParseServer({
 var dashboard = new ParseDashboard({
   'apps': [
     {
-      'serverURL': '/api',
-      'appId': process.env.APP_ID || 'favzServer',
+      'serverURL': process.env.PARSE_MOUNT || '/parse',
+      'appId': process.env.APP_ID || 'myAppId',
       'masterKey': process.env.MASTER_KEY || 'myMasterKey',
       'appName': 'favz-server'
     }
@@ -43,7 +43,7 @@ var app = express();
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
 // Serve the Parse API on the /parse URL prefix
-var mountPath = process.env.PARSE_MOUNT || '/api';
+var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
@@ -60,7 +60,7 @@ app.get('/test', function(req, res) {
 // make the Parse Dashboard available at /dashboard
 app.use('/dashboard', dashboard);
 
-var port = process.env.PORT || 4040;
+var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('favz-server running on port ' + port + '.');

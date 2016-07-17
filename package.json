@@ -1,11 +1,11 @@
 {
-  "name": "parse-server-example",
+  "name": "favz-server",
   "version": "1.4.0",
-  "description": "An example Parse API server using the parse-server module",
+  "description": "Favz API server using the parse-server module and parse-dashboard module",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ParsePlatform/parse-server-example"
+    "url": "https://github.com/blingwang/favz-server"
   },
   "license": "MIT",
   "dependencies": {
@@ -13,7 +13,7 @@
     "kerberos": "~0.0.x",
     "parse": "~1.8.0",
     "parse-dashboard": "^1.0.15",
-    "parse-server": "~2.2.12"
+    "parse-server": "^2.2.16"
   },
   "scripts": {
     "start": "node index.js"
